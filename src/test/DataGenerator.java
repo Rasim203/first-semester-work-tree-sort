@@ -11,7 +11,7 @@ public class DataGenerator {
     // Числа генерируются в диапазоне -10000 .. 10000
     public void generate(int countOfNumbers) {
         int lenOfNumber = String.valueOf(countOfNumbers).length();
-        String fileName = "File" + "0".repeat(5 - lenOfNumber) + countOfNumbers + ".txt";
+        String fileName = "File" + "0".repeat(6 - lenOfNumber) + countOfNumbers + ".txt";
         String pathname = "src\\test\\dataset\\" + fileName;
         try {
             // Создание файла

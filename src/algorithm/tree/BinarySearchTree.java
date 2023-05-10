@@ -1,5 +1,7 @@
 package algorithm.tree;
 
+import algorithm.WrapInt;
+
 import java.util.List;
 
 public class BinarySearchTree {
@@ -11,7 +13,6 @@ public class BinarySearchTree {
     - у каждого узла есть дополнительное поле - count - оно показывает количество вхождений значения ключа в это дерево
      */
     private int size = 0;
-    public int iterations = 0;
     private Node root = null;
     private BinarySearchTree() { }
     public static BinarySearchTree createBinarySearchTree() {
@@ -27,14 +28,14 @@ public class BinarySearchTree {
             add(number);
         }
     }
-    public void traverseInOrder(Node node, List<Integer> dest) {
-        iterations++;
+    public void traverseInOrder(Node node, List<Integer> dest, WrapInt listSize) {
         if (node != null) {
-            traverseInOrder(node.left, dest);
+            traverseInOrder(node.left, dest, listSize);
             for (int i = 0; i < node.count; i++) {
-                dest.add(node.value);
+                dest.set(listSize.getValue(), node.value);
+                listSize.inc();
             }
-            traverseInOrder(node.right, dest);
+            traverseInOrder(node.right, dest, listSize);
         }
     }
     public int getSize() {
@@ -44,7 +45,6 @@ public class BinarySearchTree {
         return root;
     }
     private Node addRecursive(Node current, int value) {
-        iterations++;
         if (current == null) {
             return new Node(value);
         } else {

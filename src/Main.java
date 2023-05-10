@@ -10,29 +10,27 @@ import java.util.*;
 
 public class Main {
     private static final String DATASET_DIRECTORY = "src\\test\\dataset";
-    public static void foo(Sorting sorting) {
-        List<Integer> myList = new ArrayList<>();
-        myList.add(5);
-        myList.add(4);
-        myList.add(3);
-        myList.add(2);
-        myList.add(1);
-        sorting.sort(myList);
+    public static void fillList(List<Integer> list, int count) {
+        for (int i = 0; i < count; i++) {
+            int number = (int) (Math.random() * 10 + 1);
+            list.add(number);
+        }
     }
     public static void main(String[] args) {
-        Sorting treeSort = new TreeSort();
-        DataReader dr = new DataReader();
-        List<File> testFiles = dr.getListOfFilesInFolder(DATASET_DIRECTORY);
-        foo(treeSort);
-        for (File file: testFiles) {
-            //foo(treeSort);
-            //System.out.print(file.getName() + "  ");
-            List<Integer> lst = dr.getNumbers(file);
-            long start = System.nanoTime();
-            treeSort.sort(lst);
-            long finish = System.nanoTime();
-            System.out.println((finish - start) / 1000);
-        }
+        Sorting sortingMachine = new TreeSort();
+
+        List<Integer> arrayList = new ArrayList<>();
+        fillList(arrayList, 10);
+        System.out.println("ArrayList before sorting: " + arrayList);
+        sortingMachine.sort(arrayList);
+        System.out.println("ArrayList after sorting: " + arrayList);
+
+        List<Integer> linkedList = new LinkedList<>();
+        fillList(linkedList, 10);
+        System.out.println("LinkedList before sorting: " + arrayList);
+        sortingMachine.sort(linkedList);
+        System.out.println("LinkedList after sorting: " + arrayList);
+
 
     }
 }
