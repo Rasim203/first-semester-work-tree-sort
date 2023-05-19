@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class DataReader {
     // метод, который возвращает список всех тестовых файлов из директории "dataset"
     public List<File> getListOfFilesInFolder(String folderPath) {
-        List<File> listFiles = new ArrayList<>();
+        List<File> listOfFiles = new ArrayList<>();
         File folder = new File(folderPath);
         for (File file: folder.listFiles()) {
-            listFiles.add(file);
+            listOfFiles.add(file);
         }
-        return listFiles;
+        return listOfFiles;
     }
     // метод возвращает список чисел из переданного в параметр файла
     public List<Integer> getNumbers(File file) {
